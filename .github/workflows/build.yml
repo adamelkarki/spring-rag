@@ -59,7 +59,7 @@ jobs:
 #      - name: Jar with Gradle
 #        run: ./gradlew jar
 
-docker:
+  docker:
     runs-on: ubuntu-latest
     #needs: test
     steps:
