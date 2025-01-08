@@ -2,3 +2,5 @@ git pull --rebase --autostash
 group = url de l'entreprise
 jamais de tiret dans le nom d'un package
 build.yml définit les règles pour les pipelines
+JPA , ORM qui va faire le lien entre la bd et les objets qu'on crée dans le code
+@Autowired = mettre le private dans le constructeur
