@@ -1,0 +1,3 @@
+git pull --rebase --autostash
+group = url de l'entreprise
+jamais de tiret dans le nom d'un package
