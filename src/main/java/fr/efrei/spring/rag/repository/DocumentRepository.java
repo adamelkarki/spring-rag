@@ -2,6 +2,8 @@ package fr.efrei.spring.rag.repository;
 
 import fr.efrei.spring.rag.domain.Document;
 import fr.efrei.spring.rag.repository.dto.DocumentDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +16,6 @@ public interface DocumentRepository extends CrudRepository<Document, Long> {
             "select distinct new fr.efrei.spring.rag.repository.dto.DocumentDto(document.title, document.content) from Document document"
     )
     List<DocumentDto> findAllDocuments();
+
+    Page<Document> findAll(Pageable pageable);
 }

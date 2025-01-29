@@ -37,17 +37,16 @@ public class DocumentResource {
         return ResponseEntity.ok().body(result);
     }
 
-    @GetMapping("/documents/{id}")
-    public ResponseEntity<Document> getDocument(@PathVariable Long id) {
-        log.debug("REST request to get Document : {}", id);
-        Optional<Document> result = documentService.findbyId(id);
-        return ResponseEntity.ok().body(result.orElse(null));
-    }
-
     @DeleteMapping("/documents/delete/{id}")
     public ResponseEntity<Void> deleteDocument(@PathVariable Long id) {
         log.debug("REST request to delete Document : {}", id);
         documentService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/documents/chat2/{user}")
+    public String chat2(@RequestBody String query) throws InterruptedException {
+        String result = documentService.chat(query);
+        return result;
     }
 }
