@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-rag
+    version: "1.0"
+  name: spring-rag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-rag
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-rag
+    spec:
+      containers:
+        - name: spring-rag
+          image: docker.io/mog4dor/spring-rag:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources: {}
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-rag
+  name: spring-rag
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+      name: http
+  selector:
+    app: spring-rag
+  type: NodePort
+status:
+  loadBalancer: {}
